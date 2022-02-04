@@ -16,7 +16,7 @@ public class IsPageReadyUtils {
     private final static String GET_DOCUMENT_CONTENT_ASYNC_SCRIPT = StringUtils.readFileIntoString("get_document_content_async.js");
     private final static String PAGE_CHANGES_OBSERVER_ASYNC_SCRIPT = StringUtils.readFileIntoString("wait_page_changes_stop.js");
     private final static String WINDOWS_LAODED_SCRIPT = StringUtils.readFileIntoString("wait_window_load.js");
-
+// comment
     public static String getDocumentContent(WebDriver driver) {
         JavascriptExecutor js = getJavaScriptExecutor(driver);
         String content = (String) js.executeAsyncScript(GET_DOCUMENT_CONTENT_ASYNC_SCRIPT);
