@@ -16,7 +16,7 @@ public  class Config {
 
     private static Config config = null;
 
-    public static Config getConfigProperties() {
+    public static Config getConfig() {
         if (config  == null) {
             config = new Config();
         }
@@ -32,6 +32,7 @@ public  class Config {
     @Getter private  int pageLoadTimeOutMills;
     @Getter private int scriptLoadTimeOutMills;
     @Getter private int webDriverImplicitWaitTimeOutMills;
+    @Getter private String chromeDriverPath;
 
     private Config() {
         env = System.getProperty("env");
@@ -45,11 +46,17 @@ public  class Config {
         if (rootPath == null) rootPath = System.getProperty("user.dir");
         resourcesPath = rootPath+ "/resources";
 
-        String defaultProps = resourcesPath + "/etc";
-        String envProps = resourcesPath + "/env/"+env;
+        String defaultProps = resourcesPath + "/env";
+        String envProps = defaultProps+"/"+env;
         loadProperties(defaultProps);
         loadProperties(envProps);
         setTimingVars();
+        setChromeDriverPath();
+    }
+
+    private void setChromeDriverPath() {
+        String defValue = System.getProperty("user.dir")+"/Selenium/ChromeDriver/chromedriver";
+        chromeDriverPath = System.getProperty("webdriver.chrome.driver",defValue);
     }
 
     private void loadProperties(String prop_path) {
@@ -63,7 +70,7 @@ public  class Config {
     private void setTimingVars() {
         pageChangesNotStartedMaxMills = getInegerProperty(PAGE_CHANGES_NOT_STARTED_MAX_MILLS,"60");
         pageChangesWatchIntervalMills = getInegerProperty(PAGE_CHANGES_WATCH_INTERVAL_MILLS,"100");
-        pageChangesWatchMaxMills = getInegerProperty(PAGE_CHANGES_WATCH_MAX_MILLS,"10000");
+        pageChangesWatchMaxMills = getInegerProperty(PAGE_CHANGES_WATCH_MAX_MILLS,"1000");
         pageLoadTimeOutMills = getInegerProperty(PAGE_LOAD_TIME_OUT_MILLS,"10000");
         scriptLoadTimeOutMills = getInegerProperty(SCRIPT_LOAD_TIME_OUT_MILLS,"5000");
         webDriverImplicitWaitTimeOutMills = getInegerProperty(WEBDRIVER_IMPLICIT_WAIT_TIME_OUT_MILLS,"10000");

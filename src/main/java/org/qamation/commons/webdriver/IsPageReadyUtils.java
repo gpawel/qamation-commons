@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class IsPageReadyUtils {
     private final static String PAGE_CHANGES_OBSERVER_ASYNC_SCRIPT = StringUtils.readFileIntoString("wait_page_changes_stop.js");
-    private static Config conf = Config.getConfigProperties();
+    private static Config conf = Config.getConfig();
 
     public static void setDriverTimeOuts(WebDriver driver, int pageLoadTOmills, int scriptLoadTOmills, int implicitTOmills) {
         driver.manage().timeouts().pageLoadTimeout(pageLoadTOmills, TimeUnit.MILLISECONDS);
