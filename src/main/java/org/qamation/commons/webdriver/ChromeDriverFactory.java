@@ -4,6 +4,7 @@ import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.qamation.commons.config.Config;
@@ -75,7 +76,7 @@ public class ChromeDriverFactory {
         MutableCapabilities mc = new MutableCapabilities();
         mc.setCapability(org.openqa.selenium.remote.CapabilityType.ACCEPT_SSL_CERTS, true);
         mc.setCapability(org.openqa.selenium.remote.CapabilityType.SUPPORTS_JAVASCRIPT,true);
-        mc.setCapability(org.openqa.selenium.remote.CapabilityType.SUPPORTS_FINDING_BY_CSS, true);
+        mc.setCapability(CapabilityType.TAKES_SCREENSHOT, true);
         return mc;
     }
 
