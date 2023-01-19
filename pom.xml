@@ -6,7 +6,7 @@
 
     <groupId>org.qamation</groupId>
     <artifactId>qamation-common</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2.0</version>
     <properties>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
@@ -32,6 +32,23 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.9.10.5</version>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.11.1</version>
+        </dependency>
+
     </dependencies>
 
 </project>
