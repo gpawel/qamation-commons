@@ -34,20 +34,17 @@ public class ChromeDriverFactory {
     }
 
     public static WebDriver createRemoteChromeDriver(URL hub, ChromeOptions chromeOptions) {
-        RemoteWebDriver driver = createRemoteWebdriver(hub, new DesiredCapabilities(chromeOptions));
-        return driver;
+        return createRemoteWebdriver(hub, new DesiredCapabilities(chromeOptions));
     }
 
     public static WebDriver createRemoteChromeDriver(URL hub) {
         ChromeOptions chromeOptions = getChromeOptions();
-        RemoteWebDriver driver = createRemoteWebdriver(hub, new DesiredCapabilities(chromeOptions));
-        return driver;
+        return createRemoteWebdriver(hub, new DesiredCapabilities(chromeOptions));
     }
 
     public static RemoteWebDriver createRemoteWebdriver(URL hub, DesiredCapabilities capabilities) {
         addDefaultCapabilitiesTo(capabilities);
-        RemoteWebDriver driver = 	new RemoteWebDriver(hub, capabilities);
-        return driver;
+        return new RemoteWebDriver(hub, capabilities);
     }
 
     public static String getChromeDriverPath() {
@@ -64,7 +61,6 @@ public class ChromeDriverFactory {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.merge(mc);
         chromeOptions = chromeOptions.addArguments("--disable-extensions");
-        chromeOptions.setExperimentalOption("useAutomationExtension", false);
         return chromeOptions;
     }
 

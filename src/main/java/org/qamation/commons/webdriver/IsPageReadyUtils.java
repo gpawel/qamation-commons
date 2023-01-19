@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.qamation.commons.config.Config;
 import org.qamation.commons.utils.StringUtils;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,9 +15,9 @@ public class IsPageReadyUtils {
     private static Config conf = Config.getConfig();
 
     public static void setDriverTimeOuts(WebDriver driver, int pageLoadTOmills, int scriptLoadTOmills, int implicitTOmills) {
-        driver.manage().timeouts().pageLoadTimeout(pageLoadTOmills, TimeUnit.MILLISECONDS);
-        driver.manage().timeouts().setScriptTimeout(scriptLoadTOmills, TimeUnit.MILLISECONDS);
-        driver.manage().timeouts().implicitlyWait(implicitTOmills,TimeUnit.MILLISECONDS);
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofMillis(pageLoadTOmills));
+        driver.manage().timeouts().scriptTimeout(Duration.ofMillis(scriptLoadTOmills));
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(implicitTOmills));
     }
 
     public static int isPageChangeStopped(WebDriver driver) {
@@ -31,7 +32,6 @@ public class IsPageReadyUtils {
 
     public static JavascriptExecutor getJavaScriptExecutor(WebDriver driver) {
         if (driver instanceof JavascriptExecutor) {
-            //Config.setDriverTimeOuts(driver);
             setDriverTimeOuts(driver,
                     conf.getPageLoadTimeOutMills(),
                     conf.getScriptLoadTimeOutMills(),
