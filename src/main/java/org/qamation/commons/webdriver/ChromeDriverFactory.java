@@ -70,9 +70,7 @@ public class ChromeDriverFactory {
 
     public static MutableCapabilities getDefaultMutualCapabilities() {
         MutableCapabilities mc = new MutableCapabilities();
-        mc.setCapability(org.openqa.selenium.remote.CapabilityType.ACCEPT_SSL_CERTS, true);
-        mc.setCapability(org.openqa.selenium.remote.CapabilityType.SUPPORTS_JAVASCRIPT,true);
-        mc.setCapability(CapabilityType.TAKES_SCREENSHOT, true);
+        mc.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
         return mc;
     }
 
